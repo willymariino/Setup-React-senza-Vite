@@ -19,11 +19,11 @@
 
     <script type="text/babel">
 
-        const { useState } = react
+        const { useState } = React
 
-        const reactApp = () => {
+        const ReactApp = () => {
 
-            const [count, setCount] = useState()
+            const [count, setCount] = useState(0)
 
             const incrementa = () => setCount(curr => curr + 1) // va bene anche scrivere count + 1, al posto di curr => curr +1
 
@@ -41,13 +41,21 @@
             )
         }
 
+        const { createRoot } = ReactDOM
 
+        const elementoSpecifico = document.querySelector(".elemento-specifico")
+
+        const root = createRoot(elementoSpecifico)
+        root.render(<ReactApp />)
     </script>
 
 </head>
 
 <body>
 
+    <div class="elemento-specifico">
+
+    </div>
 
 </body>
 
