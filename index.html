@@ -17,6 +17,32 @@
     <!-- Babel (JSX support in browser) -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+    <script type="text/babel">
+
+        const { useState } = react
+
+        const reactApp = () => {
+
+            const [count, setCount] = useState()
+
+            const incrementa = () => setCount(curr => curr + 1) // va bene anche scrivere count + 1, al posto di curr => curr +1
+
+            return (
+                <main>
+                    <h1>Apllicazione React</h1>
+                    <p>count: {count}</p>
+
+                    <button onClick={incrementa}>
+                        incrementa
+                    </button>
+
+                </main>
+
+            )
+        }
+
+
+    </script>
 
 </head>
 
