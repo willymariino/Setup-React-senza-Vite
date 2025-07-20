@@ -6,53 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>React senza Vite</title>
 
-    <!-- React via CDN -->
+    <!--
+        Inclusione di React tramite CDN.
+        Queste librerie permettono di usare React e ReactDOM direttamente nella pagina HTML,
+        senza bisogno di installare nulla tramite npm o altri strumenti.
+    -->
 
-    <!-- React -->
+    <!-- React: libreria principale per la creazione di componenti UI -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
 
-    <!-- ReactDOM -->
+    <!-- ReactDOM: libreria per il rendering dei componenti React nel DOM -->
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-    <!-- Babel (JSX support in browser) -->
+    <!--
+        Babel: permette di scrivere codice JSX direttamente nel browser.
+        JSX è una sintassi simile all'HTML che React trasforma in JavaScript.
+        Babel converte il JSX in JavaScript comprensibile dal browser.
+    -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+    <!--
+        Il codice React vero e proprio.
+        type="text/babel" indica a Babel di processare questo script e convertirlo da JSX a JavaScript.
+    -->
     <script type="text/babel">
 
+        // Importazione dell'hook useState da React per gestire lo stato locale del componente
         const { useState } = React
 
+        // Definizione del componente principale dell'applicazione React
         const ReactApp = () => {
 
+            // Dichiarazione di una variabile di stato 'count' e della funzione 'setCount' per aggiornarla
             const [count, setCount] = useState(0)
 
-            const incrementa = () => setCount(curr => curr + 1) // va bene anche scrivere count + 1, al posto di curr => curr +1
+            // Funzione che incrementa il valore di 'count' di 1 ogni volta che viene chiamata
+            const incrementa = () => setCount(curr => curr + 1) // curr rappresenta il valore attuale di count
 
+            // Il componente restituisce il markup JSX che verrà renderizzato
             return (
                 <main>
                     <h1>Apllicazione React</h1>
+
+                    {/* Visualizza il valore corrente di count */}
                     <p>count: {count}</p>
 
+                    {/* Bottone che, quando cliccato, chiama la funzione incrementa */}
                     <button onClick={incrementa}>
                         incrementa
                     </button>
-
                 </main>
-
             )
         }
 
+        // Estrazione della funzione createRoot da ReactDOM per il rendering
         const { createRoot } = ReactDOM
 
+        // Selezione dell'elemento HTML dove verrà montata l'applicazione React
         const elementoSpecifico = document.querySelector(".elemento-specifico")
 
+        // Creazione della radice React e rendering del componente ReactApp all'interno dell'elemento selezionato
         const root = createRoot(elementoSpecifico)
         root.render(<ReactApp />)
+
     </script>
 
 </head>
 
 <body>
 
+    <!--
+        Questo div funge da "contenitore" dove React inserirà la sua interfaccia utente.
+        L'applicazione React verrà renderizzata qui.
+    -->
     <div class="elemento-specifico">
 
     </div>
